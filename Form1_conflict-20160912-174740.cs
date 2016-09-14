@@ -16,68 +16,57 @@ namespace Kundenregister
 {
   public class Form1 : Form
   {
-        public int erkenner = -1;
-        public int[] merkstelle = new int[10000];
-        public string[] ausgabe = new string[10000];
-        public int notiz = 0;
-        public string[] speichernamen = new string[10000];
-        public int speichernamenmerk = 1;
-        public int gedrueckt = 0;
-        private IContainer components = (IContainer) null;
-        public string checkmerk;
-        public int merkdir=0;
-        // public string suchausg;
+    public string[] speichernamen = new string[10000];
+    public int speichernamenmerk = 1;
+    public int gedrueckt = 0;
+    private IContainer components = (IContainer) null;
+    public string checkmerk;
+    public int merkdir=0;
+    public string suchausg;
         public int bestatige = 0;
-        //public int meowmerk2 = 10;
 
-        public int yolo = 0;
-        // public string[] meow = new string[10000];
+
+        public string[] meow;
         private Button nameeingeben;
-        private TextBox name;
-        private CheckedListBox makieren;
-        private Label test1;
-        private ColorDialog colorDialog1;
-        private TextBox anderes;
-        private BindingSource bindingSource1;
-        private Label label1;
-        private PictureBox pictureBox1;
-        private Label label2;
-        private Button abgabe;
-        private PictureBox pictureBox2;
-        private Button Madeby;
-        private Label nutzerzahl;
-        private PictureBox pictureBox5;
+    private TextBox name;
+    private CheckedListBox makieren;
+    private Label test1;
+    private ColorDialog colorDialog1;
+    private TextBox anderes;
+    private BindingSource bindingSource1;
+    private Label label1;
+    private PictureBox pictureBox1;
+    private Label label2;
+    private Button abgabe;
+    private PictureBox pictureBox2;
+    private PictureBox pictureBox3;
+    private Button Madeby;
+    private Label nutzerzahl;
+    private PictureBox pictureBox5;
         private TextBox sucheein;
         private Label label3;
         private Button suche;
         private Label label4;
         private Label sucheaus;
+        private Label label5;
         private Button button1;
         private Label label6;
-        private Button button2;
-        private Button button3;
-        private Label label9;
-        private Label label11;
-        private Button liste;
-        private Button button4;
         private Button zuruck;
 
     public Form1()
     {
       this.InitializeComponent();
       string[] strArray = File.ReadAllLines(".\\handelsregister.txt");
-       
-            for (int index = 0; index < strArray.Length; ++index)
-                this.speichernamen[index] = strArray[index];
-            this.speichernamenmerk = Convert.ToInt32(this.speichernamen[0]);
-            this.checkmerk = Convert.ToString(this.speichernamenmerk);
+      for (int index = 0; index < strArray.Length; ++index)
+        this.speichernamen[index] = strArray[index];
+      this.speichernamenmerk = Convert.ToInt32(this.speichernamen[0]);
+      this.checkmerk = Convert.ToString(this.speichernamenmerk);
             int checkmerk2;
             string checkmerk3;
             checkmerk2 = Convert.ToInt32(this.checkmerk) - 1;
             checkmerk3 = Convert.ToString(checkmerk2);
-            this.nutzerzahl.Text = ("Momentan Eingetragene Accounts: " +checkmerk3) ;
-            File.WriteAllLines(".\\handelsregister.txt", this.speichernamen);
-        }
+      this.nutzerzahl.Text = ("Momentan Eingetragene Accounts: " +checkmerk3) ;
+    }
 
     private void nameeingeben_Click(object sender, EventArgs e)
     {
@@ -101,7 +90,7 @@ namespace Kundenregister
           }
         }
         this.test1.Text = this.checkmerk;
-        this.speichernamen[this.speichernamenmerk] = this.checkmerk;
+        this.speichernamen[this.speichernamenmerk] = this.checkmerk+";";
         this.test1.Text = this.speichernamen[this.speichernamenmerk];
         this.speichernamenmerk = this.speichernamenmerk + 1;
         this.name.Text = "";
@@ -170,8 +159,7 @@ namespace Kundenregister
                       return;
                   }
               */
-            this.button1.Visible = true;
-            this.button4.Visible = true;
+
             bestatige = 1;
         }
 
@@ -199,6 +187,7 @@ namespace Kundenregister
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.zuruck = new System.Windows.Forms.Button();
             this.sucheein = new System.Windows.Forms.TextBox();
@@ -206,23 +195,19 @@ namespace Kundenregister
             this.suche = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.sucheaus = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.liste = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // nameeingeben
             // 
-            this.nameeingeben.Location = new System.Drawing.Point(12, 36);
+            this.nameeingeben.Location = new System.Drawing.Point(12, 39);
             this.nameeingeben.Name = "nameeingeben";
             this.nameeingeben.Size = new System.Drawing.Size(121, 23);
             this.nameeingeben.TabIndex = 0;
@@ -232,11 +217,10 @@ namespace Kundenregister
             // 
             // name
             // 
-            this.name.Location = new System.Drawing.Point(12, 68);
+            this.name.Location = new System.Drawing.Point(12, 77);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(121, 20);
             this.name.TabIndex = 1;
-            this.name.TextChanged += new System.EventHandler(this.name_TextChanged);
             // 
             // makieren
             // 
@@ -247,7 +231,7 @@ namespace Kundenregister
             "Scamt",
             "Beleidigung",
             "Anderes"});
-            this.makieren.Location = new System.Drawing.Point(154, 39);
+            this.makieren.Location = new System.Drawing.Point(140, 39);
             this.makieren.Name = "makieren";
             this.makieren.Size = new System.Drawing.Size(120, 79);
             this.makieren.TabIndex = 2;
@@ -259,14 +243,14 @@ namespace Kundenregister
             this.test1.BackColor = System.Drawing.Color.Black;
             this.test1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.test1.ForeColor = System.Drawing.Color.White;
-            this.test1.Location = new System.Drawing.Point(11, 361);
+            this.test1.Location = new System.Drawing.Point(16, 344);
             this.test1.Name = "test1";
             this.test1.Size = new System.Drawing.Size(0, 24);
             this.test1.TabIndex = 3;
             // 
             // anderes
             // 
-            this.anderes.Location = new System.Drawing.Point(280, 78);
+            this.anderes.Location = new System.Drawing.Point(266, 98);
             this.anderes.Name = "anderes";
             this.anderes.Size = new System.Drawing.Size(235, 20);
             this.anderes.TabIndex = 4;
@@ -275,7 +259,7 @@ namespace Kundenregister
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(280, 62);
+            this.label1.Location = new System.Drawing.Point(266, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 13);
             this.label1.TabIndex = 5;
@@ -297,7 +281,7 @@ namespace Kundenregister
             this.abgabe.BackColor = System.Drawing.Color.LightGray;
             this.abgabe.FlatAppearance.BorderSize = 0;
             this.abgabe.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.abgabe.Location = new System.Drawing.Point(515, 12);
+            this.abgabe.Location = new System.Drawing.Point(507, 12);
             this.abgabe.Name = "abgabe";
             this.abgabe.Size = new System.Drawing.Size(121, 106);
             this.abgabe.TabIndex = 8;
@@ -311,7 +295,7 @@ namespace Kundenregister
             // 
             this.Madeby.BackColor = System.Drawing.Color.Black;
             this.Madeby.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Madeby.Location = new System.Drawing.Point(582, 365);
+            this.Madeby.Location = new System.Drawing.Point(583, 361);
             this.Madeby.Name = "Madeby";
             this.Madeby.Size = new System.Drawing.Size(58, 23);
             this.Madeby.TabIndex = 15;
@@ -353,26 +337,36 @@ namespace Kundenregister
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Kundenregister.Properties.Resources.bild4;
-            this.pictureBox2.Location = new System.Drawing.Point(-23, 331);
+            this.pictureBox2.Location = new System.Drawing.Point(-23, 301);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(716, 88);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Kundenregister.Properties.Resources.bild5;
+            this.pictureBox3.Location = new System.Drawing.Point(-68, 110);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(765, 396);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 11;
+            this.pictureBox3.TabStop = false;
+            // 
             // zuruck
             // 
-            this.zuruck.Location = new System.Drawing.Point(493, 174);
+            this.zuruck.Location = new System.Drawing.Point(269, 36);
             this.zuruck.Name = "zuruck";
-            this.zuruck.Size = new System.Drawing.Size(92, 23);
+            this.zuruck.Size = new System.Drawing.Size(107, 23);
             this.zuruck.TabIndex = 19;
-            this.zuruck.Text = "Zurücksetzen";
+            this.zuruck.Text = "Zurück setzen";
             this.zuruck.UseVisualStyleBackColor = true;
             this.zuruck.Click += new System.EventHandler(this.zuruck_Click);
             // 
             // sucheein
             // 
-            this.sucheein.Location = new System.Drawing.Point(15, 226);
+            this.sucheein.Location = new System.Drawing.Point(16, 226);
             this.sucheein.Name = "sucheein";
             this.sucheein.Size = new System.Drawing.Size(198, 20);
             this.sucheein.TabIndex = 20;
@@ -382,7 +376,7 @@ namespace Kundenregister
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 203);
+            this.label3.Location = new System.Drawing.Point(16, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(202, 20);
             this.label3.TabIndex = 21;
@@ -390,7 +384,7 @@ namespace Kundenregister
             // 
             // suche
             // 
-            this.suche.Location = new System.Drawing.Point(219, 201);
+            this.suche.Location = new System.Drawing.Point(224, 203);
             this.suche.Name = "suche";
             this.suche.Size = new System.Drawing.Size(75, 43);
             this.suche.TabIndex = 22;
@@ -417,18 +411,24 @@ namespace Kundenregister
             this.sucheaus.Size = new System.Drawing.Size(0, 20);
             this.sucheaus.TabIndex = 24;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 249);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(223, 13);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Suche nur mit Einzelnen Buchstaben möglich!";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(463, 203);
+            this.button1.Location = new System.Drawing.Point(382, 36);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 23);
+            this.button1.Size = new System.Drawing.Size(119, 23);
             this.button1.TabIndex = 26;
-            this.button1.Text = "Bestätigung";
+            this.button1.Text = "Zurück setzen Sicher";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
             // label6
             // 
@@ -440,82 +440,15 @@ namespace Kundenregister
             this.label6.TabIndex = 27;
             this.label6.Text = "Ausgabe:";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 331);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Prev.";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(111, 331);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Next";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 185);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(272, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Tipp: Groß- und Kleinschreibung beachten beim Suchen";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(460, 161);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(143, 13);
-            this.label11.TabIndex = 34;
-            this.label11.Text = "Dies Löscht eure Datenbank";
-            // 
-            // liste
-            // 
-            this.liste.Location = new System.Drawing.Point(300, 201);
-            this.liste.Name = "liste";
-            this.liste.Size = new System.Drawing.Size(80, 43);
-            this.liste.TabIndex = 35;
-            this.liste.Text = "Liste Anzeigen";
-            this.liste.UseVisualStyleBackColor = true;
-            this.liste.Click += new System.EventHandler(this.liste_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(542, 203);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(73, 23);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "Abbrechen";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            this.button4.MouseEnter += new System.EventHandler(this.button4_MouseEnter);
-            this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(640, 388);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.liste);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(640, 383);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.sucheaus);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.suche);
@@ -535,21 +468,23 @@ namespace Kundenregister
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox3);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Kundenregister";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
     }
-
+        
         private void suche_Click(object sender, EventArgs e)
         {
-            /*   ALTE SUCHE:   komplett selbst geschrieben :3 bleibt deshalb im code xD
+            
             string einsuch = sucheein.Text;
             int einsuch2 =0 ;
             int verg = 0;
@@ -587,56 +522,29 @@ namespace Kundenregister
 
             }
 
-            int lastmerk = 0;
-            for(int i=0;i<suchausg.Length;i++) //Calandra: ;     i=11
+            
+            
+            for(int i=0;i<suchausg.Length;i++)
             {
-                
-                if (suchausg[i] == ';') //suchausgabe 11 = ;
+                if (suchausg[i] == ';')
                 {
                     
-                    for(int x=lastmerk;x<i;x++)   //x=0; solange x< 11;x++
+                    for(int x=0;x<i;x++)
                     {
-                        meow[meowmerk] = meow[meowmerk] + suchausg[x]; //meow[0]
-                        lastmerk = x;
+                        meow[i] = meow[i] + suchausg[x];
                     }
-                    meowmerk++;
                 }
             }
-            sucheaus.Text = "0: "+meow[0];
-            */
-
-
-            notiz = 0;
-            string einsuch = sucheein.Text;
-            for (int i = 0; i < speichernamenmerk; i++)
+            if (meow.Length>10)
             {
-                erkenner = speichernamen[i].IndexOf(einsuch);
-                if (erkenner != -1)
-                {
-                    merkstelle[notiz] = i;
-                    notiz++;
-                    erkenner = -1;
-                }
-
-            }
-            for (int i = 0; i < notiz; i++)
-            {
-                ausgabe[i] = speichernamen[merkstelle[i]];
-            }
-
-            if (notiz == 0)
-            {
-                sucheaus.Text = "Es konnte niemand gefunden werden, sicher das du es richtig geschrieben hast?";
-            }
-            else
-            {
-                sucheaus.Text = "1: " + ausgabe[0];
+                test1.Text = "Suche nicht anzeigbar, mehr wie 10 ergebnisse";
             }
             
-
-
-            //sucheaus.Text = meow[0];
-            test1.Text = "gefunden:" + Convert.ToString(notiz);            
+            sucheaus.Text = meow[1] + "\n"+ meow[2] + "\n" + meow[3] + "\n"+meow[4] + "\n" + meow[5] + "\n"+meow[6] + "\n" + meow[7] + "\n"+meow[8] + "\n" + meow[9] + "\n"+meow[10];
+            suchausg = "";
+            
+            //object findText = "suchbegriff";
+ 
 
         }
 
@@ -657,97 +565,6 @@ namespace Kundenregister
                 Close();
             }
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            yolo = yolo - 1;
-            //prev
-            if (yolo<notiz&&yolo>=0)
-            {
-                sucheaus.Text = "";                
-                sucheaus.Text = yolo+1+": "+ausgabe[yolo];
-                test1.Text = "gefunden:" + Convert.ToString(notiz);
-                
-
-            }
-            else
-            {
-                
-                test1.Text = "ERROR minimale anzahl erreicht";
-                yolo = 0;
-            }
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            yolo++;
-            //next
-            if (yolo < notiz && yolo >= 0)
-            {
-                sucheaus.Text = "";
-                sucheaus.Text = yolo+1 + ": "+ausgabe[yolo];                
-                test1.Text = "gefunden:"+Convert.ToString(notiz);
-
-
-            }
-            else
-            {
-                test1.Text = "ERROR maximale anzahl erreicht";
-                yolo = notiz;
-            }
-        }
-
-        private void name_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void liste_Click(object sender, EventArgs e)
-        {
-            new Form3().Show((IWin32Window)this);
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.button1.Visible = false;
-            this.button4.Visible = false;
-            bestatige = 0;
-        }
-
-        private void button1_MouseEnter(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.Red;
-            button4.BackColor = Color.Green;
-        }
-
-        private void button4_MouseEnter(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.Red;
-            button4.BackColor = Color.Green;
-        }
-
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.White;
-            button4.BackColor = Color.White;
-        }
-
-        private void button4_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.White;
-            button4.BackColor = Color.White;
         }
     }
     

@@ -23,3 +23,4 @@ E:\owncloud speicher\C#\Kundenregister\obj\Debug\Kundenregister.MadeBy.resources
 E:\owncloud speicher\C#\Kundenregister\obj\Debug\Kundenregister.Properties.Resources.resources
 E:\owncloud speicher\C#\Kundenregister\obj\Debug\Kundenregister.Sicherung.resources
 E:\owncloud speicher\C#\Kundenregister\obj\Debug\Kundenregister.csproj.GenerateResource.Cache
+E:\owncloud speicher\C#\Kundenregister\obj\Debug\Kundenregister.Form3.resources
